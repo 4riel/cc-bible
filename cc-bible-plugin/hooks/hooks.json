@@ -1,0 +1,30 @@
+{
+  "hooks": [
+    {
+      "event": "PostToolUse",
+      "matcher": {
+        "tool_name": "Edit|Write"
+      },
+      "hooks": [
+        {
+          "type": "command",
+          "command": "bash ${CLAUDE_PLUGIN_ROOT}/scripts/format-check.sh",
+          "timeout": 30
+        }
+      ]
+    },
+    {
+      "event": "PreToolUse",
+      "matcher": {
+        "tool_name": "Bash"
+      },
+      "hooks": [
+        {
+          "type": "prompt",
+          "prompt": "If this bash command contains 'git push', 'git reset --hard', 'git clean -f', 'git branch -D', 'git checkout .', or 'git restore .', BLOCK the command and warn the user that this is a destructive/remote operation requiring explicit confirmation. Otherwise ALLOW it silently.",
+          "timeout": 10
+        }
+      ]
+    }
+  ]
+}
