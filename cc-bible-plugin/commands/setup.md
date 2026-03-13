@@ -56,7 +56,8 @@ Print a guide for commandments that require human setup:
 ### III. Run Parallel Sessions
 ```
 # Use worktrees for parallel Claude sessions
-claude --worktree
+git worktree add ../project-feature feature-branch
+cd ../project-feature && claude
 
 # Set up terminal aliases for quick access
 alias za="zellij action new-tab -- claude"

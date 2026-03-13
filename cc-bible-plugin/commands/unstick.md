@@ -3,7 +3,7 @@ description: "Escalating strategy when Claude is stuck or looping. 4 techniques 
 allowed-tools: "Read, Grep, Glob"
 ---
 
-# Commandment IX: Force Deeper Thinking
+# Commandment IX (Escalation): Force Deeper Thinking
 
 You are stuck or looping. Apply these techniques in order — escalate if the previous step didn't work.
 

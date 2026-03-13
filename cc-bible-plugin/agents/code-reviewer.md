@@ -1,7 +1,7 @@
 ---
 name: code-reviewer
 description: "Use this agent to review code for security, quality, and convention adherence. Dispatched by /review command. Confidence-based filtering, stack-agnostic."
-model: sonnet
+model: inherit
 tools:
   - Read
   - Grep

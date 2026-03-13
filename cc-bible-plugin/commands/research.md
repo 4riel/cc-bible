@@ -10,7 +10,7 @@ Dispatch the `researcher` agent to explore the codebase in its own context windo
 
 ## Process
 
-1. Take the user's research question: `$ARGUMENTS`
+1. Take the user's research question from the command argument
 
 2. Dispatch `researcher` agent with the question. The agent will:
    - Read relevant files

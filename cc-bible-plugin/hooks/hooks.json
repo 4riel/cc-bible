@@ -3,7 +3,20 @@
     {
       "event": "PostToolUse",
       "matcher": {
-        "tool_name": "Edit|Write"
+        "tool_name": "Edit"
+      },
+      "hooks": [
+        {
+          "type": "command",
+          "command": "bash ${CLAUDE_PLUGIN_ROOT}/scripts/format-check.sh",
+          "timeout": 30
+        }
+      ]
+    },
+    {
+      "event": "PostToolUse",
+      "matcher": {
+        "tool_name": "Write"
       },
       "hooks": [
         {

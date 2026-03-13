@@ -4,7 +4,7 @@ allowed-tools: "Read, Write, Edit, Bash, Grep, Agent"
 argument-hint: "[feature to build]"
 ---
 
-# Commandment II: Test-Driven Development
+# Commandment II (TDD): Test-Driven Development
 
 Dispatch the `tdd-guide` agent to enforce strict RED-GREEN-REFACTOR with vertical slicing.
 

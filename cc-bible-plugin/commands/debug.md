@@ -4,7 +4,7 @@ allowed-tools: "Read, Grep, Glob, Bash, Edit, Write"
 argument-hint: "[bug description or error message]"
 ---
 
-# Commandment IX: Structured Debugging
+# Commandment IX (Structured): Systematic Debugging
 
 Follow this 9-step systematic framework. Do not skip steps.
 
