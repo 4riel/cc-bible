@@ -4,7 +4,7 @@ allowed-tools: "Read, Grep, Glob, Bash, Agent"
 argument-hint: "[files or branch to review]"
 ---
 
-# Commandments II + VI: Code Review with Subagents
+# Commandment VI: Code Review with Subagents
 
 Dispatch the `code-reviewer` agent to review changed code for security, quality, and convention adherence.
 

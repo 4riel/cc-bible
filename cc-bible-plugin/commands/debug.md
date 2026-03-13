@@ -4,9 +4,9 @@ allowed-tools: "Read, Grep, Glob, Bash, Edit, Write"
 argument-hint: "[bug description or error message]"
 ---
 
-# Commandment IX (Structured): Systematic Debugging
+# Commandment IX (Structured): Shumer's Systematic Debugging
 
-Follow this 9-step systematic framework. Do not skip steps.
+Follow this 9-step systematic framework. The only permitted shortcut is the Step 3 special case.
 
 ## The 9 Steps
 

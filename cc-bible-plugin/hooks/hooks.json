@@ -33,8 +33,8 @@
       },
       "hooks": [
         {
-          "type": "prompt",
-          "prompt": "If this bash command contains 'git push', 'git reset --hard', 'git clean -f', 'git branch -D', 'git checkout .', or 'git restore .', BLOCK the command and warn the user that this is a destructive/remote operation requiring explicit confirmation. Otherwise ALLOW it silently.",
+          "type": "command",
+          "command": "bash ${CLAUDE_PLUGIN_ROOT}/scripts/git-guardrail.sh",
           "timeout": 10
         }
       ]

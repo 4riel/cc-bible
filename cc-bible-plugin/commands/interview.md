@@ -38,7 +38,8 @@ Interview the user about their feature before building anything. Ask questions o
 - ONE question per message — never overwhelm with multiple questions
 - Prefer multiple choice when possible — easier to answer
 - Don't ask questions you can answer by reading the codebase
-- Expect 5-40+ questions depending on feature complexity
+- Typical CRUD feature: 5-10 questions. New service/integration: 15-25. Complex system: 30+
+- Stop when you can write the spec without making assumptions
 - Never start building during the interview
 
 **Feature:** $ARGUMENTS

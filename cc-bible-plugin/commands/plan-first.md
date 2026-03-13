@@ -12,7 +12,7 @@ You are entering planning mode. Do NOT write any code until the user explicitly 
 
 1. **Explore** — Use subagents to read relevant files and build context about the codebase. Understand the current architecture, conventions, and constraints before proposing anything.
 
-2. **Plan** — Produce a concise implementation plan. Sacrifice grammar for concision. Every sentence must earn its place. Structure:
+2. **Plan** — Produce a concise implementation plan. Use bullet points and fragments over full sentences. No preamble. Structure:
    - **Unresolved questions** (list these FIRST — they block everything)
    - **Approach** — what you'll do and why
    - **Files to create/modify** — with one-line description each
