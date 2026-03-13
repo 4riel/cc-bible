@@ -12,21 +12,33 @@ if [ ! -t 0 ]; then
 fi
 
 # Extract the command from JSON input
-CMD=$(echo "$INPUT" | grep -oE '"command"\s*:\s*"[^"]*"' | head -1 | sed 's/.*"command"\s*:\s*"//;s/"$//' || true)
+CMD=$(echo "$INPUT" | grep -oE '"command"[[:space:]]*:[[:space:]]*"[^"]*"' | head -1 | sed 's/.*"command"[[:space:]]*:[[:space:]]*"//;s/"$//' || true)
 
 if [ -z "$CMD" ]; then
   exit 0
 fi
 
-# Check for destructive git operations
-if echo "$CMD" | grep -qE 'git\s+push\s+--force|git\s+push\s+-f\b|git\s+push\s+--force-with-lease|git\s+reset\s+--hard|git\s+clean\s+-f|git\s+branch\s+-D|git\s+checkout\s+\.|git\s+restore\s+\.|git\s+stash\s+drop|git\s+push(?!\s)'; then
-  echo "BLOCKED: Destructive or remote git operation detected. This requires explicit user confirmation." >&2
-  exit 1
-fi
+# Check for destructive git operations (each pattern on its own line for clarity)
+BLOCKED=false
 
-# Check for plain 'git push' (remote operation)
-if echo "$CMD" | grep -qE 'git\s+push(\s|$)'; then
-  echo "BLOCKED: git push detected. This is a remote operation requiring explicit user confirmation." >&2
+# Remote operations
+echo "$CMD" | grep -qE 'git[[:space:]]+push' && BLOCKED=true
+
+# History rewriting
+echo "$CMD" | grep -qE 'git[[:space:]]+reset[[:space:]]+--hard' && BLOCKED=true
+echo "$CMD" | grep -qE 'git[[:space:]]+rebase' && BLOCKED=true
+
+# Destructive deletions
+echo "$CMD" | grep -qE 'git[[:space:]]+clean[[:space:]]+-f' && BLOCKED=true
+echo "$CMD" | grep -qE 'git[[:space:]]+branch[[:space:]]+-D' && BLOCKED=true
+echo "$CMD" | grep -qE 'git[[:space:]]+stash[[:space:]]+drop' && BLOCKED=true
+
+# Discard working changes
+echo "$CMD" | grep -qE 'git[[:space:]]+checkout[[:space:]]+\.' && BLOCKED=true
+echo "$CMD" | grep -qE 'git[[:space:]]+restore[[:space:]]+\.' && BLOCKED=true
+
+if [ "$BLOCKED" = true ]; then
+  echo "BLOCKED: Destructive or remote git operation detected. This requires explicit user confirmation." >&2
   exit 1
 fi
 
